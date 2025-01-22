@@ -58,6 +58,7 @@ import org.pcap4j.packet.TcpPacket;
 public class UrlTracker {
     public static void main(String[] args) throws PcapNativeException, NotOpenException, InterruptedException {
 
+        //PcapNetworkInterface nif = Pcaps.findAllDevs().get(5); // Sélectionnez l'interface réseau
         PcapNetworkInterface nif = Pcaps.findAllDevs().get(3); // Sélectionnez l'interface réseau
         System.out.println("Interface sélectionnée : " + nif.getName());
         PcapHandle handle = nif.openLive(65536, PcapNetworkInterface.PromiscuousMode.PROMISCUOUS, 10);
