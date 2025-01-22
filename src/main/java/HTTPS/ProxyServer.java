@@ -108,11 +108,16 @@ import org.littleshoot.proxy.HttpFiltersSourceAdapter;
 
 import io.netty.handler.codec.http.HttpRequest;
 import io.netty.handler.codec.http.HttpObject;
+import org.littleshoot.proxy.MitmManager;
 import org.littleshoot.proxy.impl.DefaultHttpProxyServer;
+//import org.littleshoot.proxy.impl.DefaultMitmManager;
+import java.security.KeyStore;
 
 public class ProxyServer {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        KeyStore keyStore = CertificateGenerator.generateCertificate();
+//        MitmManager mitmManager = new DefaultMitmManager(keyStore, "password");
         DefaultHttpProxyServer.bootstrap()
                 .withPort(8080)
                 .withFiltersSource(new HttpFiltersSourceAdapter() {
